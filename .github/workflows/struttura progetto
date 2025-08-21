@@ -1,0 +1,21 @@
+client-management-app/
+├── public/
+│   ├── index.html
+│   ├── manifest.json
+│   ├── favicon.ico
+│   └── icons/
+├── src/
+│   ├── components/
+│   │   ├── CalendarApp.jsx
+│   │   ├── VoiceRecorder.jsx
+│   │   └── ContactImporter.jsx
+│   ├── utils/
+│   │   ├── contactImporter.js
+│   │   └── pdfGenerator.js
+│   ├── styles/
+│   │   └── tailwind.css
+│   ├── App.js
+│   └── index.js
+├── package.json
+├── tailwind.config.js
+└── README.md
