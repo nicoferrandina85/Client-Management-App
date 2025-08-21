@@ -1,0 +1,181 @@
+{
+  "files": {
+    "package.json": {
+      "name": "client-management-system",
+      "version": "1.0.0",
+      "description": "Sistema completo per gestione clienti, appuntamenti e campagne promozionali",
+      "homepage": "https://yourusername.github.io/client-management-app",
+      "private": true,
+      "dependencies": {
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-scripts": "5.0.1",
+        "lucide-react": "^0.263.1",
+        "web-vitals": "^2.1.4"
+      },
+      "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build"
+      },
+      "devDependencies": {
+        "gh-pages": "^5.0.0",
+        "tailwindcss": "^3.3.0",
+        "autoprefixer": "^10.4.14",
+        "postcss": "^8.4.24"
+      },
+      "eslintConfig": {
+        "extends": [
+          "react-app",
+          "react-app/jest"
+        ]
+      },
+      "browserslist": {
+        "production": [
+          ">0.2%",
+          "not dead",
+          "not op_mini all"
+        ],
+        "development": [
+          "last 1 chrome version",
+          "last 1 firefox version",
+          "last 1 safari version"
+        ]
+      }
+    },
+
+    "public/manifest.json": {
+      "short_name": "ClientManager",
+      "name": "Sistema Gestione Clienti",
+      "description": "App completa per gestione clienti, appuntamenti e campagne promozionali",
+      "icons": [
+        {
+          "src": "favicon.ico",
+          "sizes": "64x64 32x32 24x24 16x16",
+          "type": "image/x-icon"
+        },
+        {
+          "src": "logo192.png",
+          "type": "image/png",
+          "sizes": "192x192"
+        },
+        {
+          "src": "logo512.png",
+          "type": "image/png",
+          "sizes": "512x512"
+        }
+      ],
+      "start_url": ".",
+      "display": "standalone",
+      "theme_color": "#2563eb",
+      "background_color": "#f8fafc",
+      "orientation": "portrait-primary",
+      "categories": ["business", "productivity", "utilities"],
+      "lang": "it"
+    },
+
+    "vercel.json": {
+      "name": "client-management-system",
+      "version": 2,
+      "builds": [
+        {
+          "src": "package.json",
+          "use": "@vercel/static-build",
+          "config": {
+            "distDir": "build"
+          }
+        }
+      ],
+      "routes": [
+        {
+          "src": "/(.*)",
+          "dest": "/index.html"
+        }
+      ],
+      "headers": [
+        {
+          "source": "/(.*)",
+          "headers": [
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "X-XSS-Protection",
+              "value": "1; mode=block"
+            }
+          ]
+        }
+      ]
+    },
+
+    "netlify.toml": {
+      "build": {
+        "publish": "build",
+        "command": "npm run build"
+      },
+      "redirects": [
+        {
+          "from": "/*",
+          "to": "/index.html",
+          "status": 200
+        }
+      ],
+      "headers": [
+        {
+          "for": "/*",
+          "values": {
+            "X-Frame-Options": "DENY",
+            "X-XSS-Protection": "1; mode=block",
+            "Content-Security-Policy": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://api.linkedin.com https://www.googleapis.com https://graph.microsoft.com"
+          }
+        }
+      ]
+    },
+
+    ".env.example": "# Copia questo file in .env e inserisci i tuoi valori reali\nREACT_APP_GOOGLE_CLIENT_ID=your_google_client_id_here\nREACT_APP_MICROSOFT_CLIENT_ID=your_microsoft_client_id_here\nREACT_APP_LINKEDIN_CLIENT_ID=your_linkedin_client_id_here\nREACT_APP_API_BASE_URL=https://your-api-domain.com\nREACT_APP_ENVIRONMENT=production",
+
+    ".gitignore": "# Dependencies\nnode_modules/\n/.pnp\n.pnp.js\n\n# Testing\n/coverage\n\n# Production\n/build\n\n# Environment variables\n.env\n.env.local\n.env.development.local\n.env.test.local\n.env.production.local\n\n# Logs\nnpm-debug.log*\nyarn-debug.log*\nyarn-error.log*\n\n# Runtime data\npids\n*.pid\n*.seed\n*.pid.lock\n\n# Optional npm cache directory\n.npm\n\n# ESLint cache\n.eslintcache\n\n# IDE files\n.vscode/\n.idea/\n*.swp\n*.swo\n*~\n\n# OS generated files\n.DS_Store\n.DS_Store?\n._*\n.Spotlight-V100\n.Trashes\nehthumbs.db\nThumbs.db",
+
+    "tailwind.config.js": "/** @type {import('tailwindcss').Config} */\nmodule.exports = {\n  content: [\n    \"./src/**/*.{js,jsx,ts,tsx}\",\n    \"./public/index.html\"\n  ],\n  theme: {\n    extend: {\n      colors: {\n        primary: {\n          50: '#eff6ff',\n          100: '#dbeafe',\n          200: '#bfdbfe',\n          300: '#93c5fd',\n          400: '#60a5fa',\n          500: '#3b82f6',\n          600: '#2563eb',\n          700: '#1d4ed8',\n          800: '#1e40af',\n          900: '#1e3a8a',\n        }\n      },\n      fontFamily: {\n        'sans': ['Inter', 'system-ui', 'sans-serif']\n      }\n    },\n  },\n  plugins: [],\n}",
+
+    "postcss.config.js": "module.exports = {\n  plugins: {\n    tailwindcss: {},\n    autoprefixer: {},\n  },\n}",
+
+    "public/index.html": "<!DOCTYPE html>\n<html lang=\"it\">\n<head>\n  <meta charset=\"utf-8\" />\n  <link rel=\"icon\" href=\"%PUBLIC_URL%/favicon.ico\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n  <meta name=\"theme-color\" content=\"#2563eb\" />\n  <meta name=\"description\" content=\"Sistema completo per gestione clienti, appuntamenti e campagne promozionali. Con registrazione vocale e importazione contatti automatica.\" />\n  <meta name=\"keywords\" content=\"gestione clienti, appuntamenti, CRM, campagne, registrazione vocale, calendario\" />\n  <meta name=\"author\" content=\"Il Tuo Nome\" />\n  \n  <!-- Open Graph -->\n  <meta property=\"og:title\" content=\"Sistema Gestione Clienti\" />\n  <meta property=\"og:description\" content=\"App completa per gestione clienti con calendario, campagne e registrazione vocale\" />\n  <meta property=\"og:type\" content=\"website\" />\n  <meta property=\"og:url\" content=\"https://your-domain.com\" />\n  <meta property=\"og:image\" content=\"%PUBLIC_URL%/og-image.png\" />\n  \n  <!-- Twitter Card -->\n  <meta name=\"twitter:card\" content=\"summary_large_image\" />\n  <meta name=\"twitter:title\" content=\"Sistema Gestione Clienti\" />\n  <meta name=\"twitter:description\" content=\"App completa per gestione clienti con calendario, campagne e registrazione vocale\" />\n  <meta name=\"twitter:image\" content=\"%PUBLIC_URL%/og-image.png\" />\n  \n  <link rel=\"apple-touch-icon\" href=\"%PUBLIC_URL%/logo192.png\" />\n  <link rel=\"manifest\" href=\"%PUBLIC_URL%/manifest.json\" />\n  \n  <title>Sistema Gestione Clienti - App Completa CRM</title>\n</head>\n<body>\n  <noscript>È necessario abilitare JavaScript per utilizzare questa app.</noscript>\n  <div id=\"root\"></div>\n</body>\n</html>",
+
+    "README.md": "# 🚀 Sistema Gestione Clienti\n\nApp completa per la gestione di clienti, appuntamenti e campagne promozionali con funzionalità avanzate di registrazione vocale e importazione contatti.\n\n## ✨ Funzionalità Principali\n\n- 📅 **Gestione Appuntamenti** - Calendario completo con note e stati\n- 📢 **Campagne Promozionali** - Crea e monitora campagne marketing\n- 🎙️ **Registrazione Vocale** - Trascrizione automatica delle note\n- 📄 **Generazione PDF** - Rapporti personalizzabili\n- 📇 **Importazione Contatti** - Da LinkedIn, Gmail e Outlook\n- 📊 **Dashboard Analytics** - Statistiche complete\n- 📱 **Progressive Web App** - Installabile su mobile\n\n## 🚀 Demo Online\n\n[Prova l'App Live](https://your-app-url.vercel.app)\n\n## 🛠️ Installazione Locale\n\n```bash\n# Clona il repository\ngit clone https://github.com/yourusername/client-management-app.git\n\n# Entra nella directory\ncd client-management-app\n\n# Installa le dipendenze\nnpm install\n\n# Avvia in modalità sviluppo\nnpm start\n```\n\n## 🔧 Configurazione\n\n1. Copia `.env.example` in `.env`\n2. Inserisci le tue API keys:\n   - Google Client ID per Gmail\n   - Microsoft Client ID per Outlook\n   - LinkedIn Client ID\n\n## 📱 Utilizzo\n\n### Gestione Appuntamenti\n- Crea, modifica e elimina appuntamenti\n- Registra note vocali con trascrizione automatica\n- Genera PDF dei rapporti appuntamenti\n\n### Campagne Promozionali\n- Crea campagne email, social e SMS\n- Monitora metriche di performance\n- Gestisci target audience e sconti\n\n### Importazione Contatti\n- Importa automaticamente da LinkedIn\n- Sincronizza contatti Gmail e Outlook\n- Deduplica e organizza automaticamente\n\n## 🏗️ Tecnologie Utilizzate\n\n- **Frontend**: React 18, Tailwind CSS\n- **Icone**: Lucide React\n- **PWA**: Service Workers, Web Manifest\n- **APIs**: Web Speech API, OAuth 2.0\n- **Deployment**: Vercel, GitHub Pages, Netlify\n\n## 📄 Licenza\n\nMIT License - vedi [LICENSE](LICENSE) per dettagli.\n\n## 🤝 Contribuire\n\n1. Fork il progetto\n2. Crea un branch per la tua feature\n3. Commit le modifiche\n4. Push al branch\n5. Apri una Pull Request\n\n## 📞 Supporto\n\nPer supporto o domande:\n- 📧 Email: support@your-domain.com\n- 🐛 Issues: [GitHub Issues](https://github.com/yourusername/client-management-app/issues)\n\n---\n\n⭐ Se questo progetto ti è utile, lascia una stella su GitHub!\n"
+  },
+
+  "deploymentCommands": {
+    "github-pages": [
+      "npm install -g gh-pages",
+      "npm install",
+      "npm run build",
+      "npm run deploy"
+    ],
+    "vercel": [
+      "npm install -g vercel",
+      "vercel login",
+      "vercel --prod"
+    ],
+    "netlify": [
+      "npm install -g netlify-cli",
+      "netlify login",
+      "netlify init",
+      "netlify deploy --prod"
+    ],
+    "firebase": [
+      "npm install -g firebase-tools",
+      "firebase login",
+      "firebase init hosting",
+      "firebase deploy"
+    ]
+  }
+}
